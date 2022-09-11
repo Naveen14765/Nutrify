@@ -1,13 +1,41 @@
-{% extends 'base.html' %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Nutrify Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
-{% block content %}
-
-<h1>logoin</h1>
-{% endblock %}</body>
+<!-- partial:index.partial.html -->
+<div class="wrapper">
+	<header>
+		<h1>LogIn</h1>
+	</header>
+	<main>
+		<form action="" method="POST">
+            {% csrf_token %}
+            <div class="input-block">
+				<div class="input-group">
+					<label for="email">Username</label>
+					<input type="text" class="form-control" name="username"  required="required">
+				</div>
+			</div>
+			<div class="input-block">
+				<div class="input-group">
+					<label for="password">Choose Password</label>
+                    <input type="password" class="form-control" name="password"  required="required">
+				</div>
+			</div>
+			<input type="submit" class="btn btn-primary btn-lg" name="Submit">
+		</form>
+	</main>
+	<footer>
+		<p>New User?  </p><a href="{% url 'register' %}">Create new account</a>
+	</footer>
+</div>
+</body>
 </html>

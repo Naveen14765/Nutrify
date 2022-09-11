@@ -1,68 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <title>Bootstrap Sign up Form Horizontal</title>
+  <meta charset="UTF-8">
+  <title>Nutrify Sign Up</title>
     {% load static %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
 
-<div class="signup-form">
-    <form method="POST" class="form-horizontal">
-		{% csrf_token %}
-        <div class="col-xs-8 col-xs-offset-4">
-            <h2>Sign Up</h2>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4">Username</label>
-            <div class="col-xs-8">
-                <div class="form-control">
-                    {{form.username}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4">Email Address</label>
-            <div class="col-xs-8">
-                <div class="form-control">
+<div class="wrapper">
+	<header>
+		<h1>Signup</h1>
+	</header>
+	<main>
+		<form action="" method="POST">
+            {% csrf_token %}
+            <div class="input-block">
+				<div class="input-group">
+					<label for="email">Username</label>
+					{{form.username}}
+				</div>
+			</div>
+			<div class="input-block">
+				<div class="input-group">
+					<label for="email">E-Mail</label>
                     {{form.email}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4">Password</label>
-            <div class="col-xs-8">
-                <div class="form-control">
+				</div>
+			</div>
+			<div class="input-block">
+				<div class="input-group">
+					<label for="password">Choose Password</label>
                     {{form.password1}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-xs-4">Confirm Password</label>
-            <div class="col-xs-8">
-                <div class="form-control">
-                    {{form.password2}}
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-xs-8 col-xs-offset-4">
-                <input type="submit" class="btn btn-primary btn-lg" name="Submit">
-            </div>
-        </div>
-        {% for error in Formerror.password.errors %}
-        <p>{{error}}</p>
-        {% endfor %}
-    </form>
-    <div class="text-center">Already have an account? <a href="#">Login here</a></div>
+				</div>
+				<div class="input-group">
+					<label for="confirmation">Confirm Password</label>
+					{{form.password2}}
+				</div>
+			</div>
+			<input type="submit" value="Join now" />
+		</form>
+	</main>
+	<footer>
+		<a href="{% url 'login' %}">I already have an account</a>
+	</footer>
 </div>
+<!-- partial -->
+
 
 </body>
-</html>                            
+</html>

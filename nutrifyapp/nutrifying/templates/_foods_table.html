@@ -1,0 +1,115 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.flipster/1.1.5/jquery.flipster.min.css">
+    <style>.container {
+        margin: 150px auto;
+        max-width: 98%;
+    }
+
+    h2 {
+        margin: 2rem auto;
+    }
+    </style>
+</head>
+
+<body>
+
+
+<div class="container h-50 w-50 pull-left" style="background-color:#222222; margin-top:  5%">
+    <div id="coverflow">
+        <ul class="flip-items">
+            {% for food in foods %}
+            <li data-flip-title="Red">
+                <div style="width: 200px; height: 250px; background-color: green; color: white">
+                    <button type="button" class="update-food btn btn-sm btn-primary pull-right"
+                            data-form-url="{% url 'update_food' food.pk %}">
+                        <span class="fa fa-pencil"></span>
+                    </button>
+                    <button type="button" class="delete-food btn btn-sm btn-danger pull-right "
+                            data-form-url="{% url 'delete_food' food.pk %}">
+                        <span class="fa fa-trash"></span>
+                    </button>
+
+
+                    <p>Food Type</p>
+                    <p>{{ food.food }}</p>
+                    <p>Username</p>
+                    <p>{{ food.userName }}</p>
+
+                    <p>Weight</p>
+                    <p>{{ food.weight }}</p>
+
+                    <p>Calories</p>
+                    <p>{{ food.calories }}</p>
+
+
+
+
+                </div>
+            </li>
+            {% endfor %}
+
+
+
+        </ul>
+    </div>
+</div>
+
+<div class="container h-50 w-50 pull-left" style="background-color:#222222; margin-top: 5%">
+    <div id="coverflowexcercise">
+        <ul class="flip-items">
+            {% for add in add_workout %}
+            <li data-flip-title="Red">
+                <div style="width: 200px; height: 250px; background-color: green; color: white">
+
+                    <p>Exercise</p>
+                    <p>{{ add.excercise }}</p>
+
+                    <p>Calories</p>
+                    <p>{{ add.calories }}</p>
+
+                    <p>Duration</p>
+                    <p>{{ add.duration }}</p>
+                </div>
+
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.flipster/1.1.5/jquery.flipster.min.js"></script>
+<script>
+    var coverflow = $("#coverflow").flipster();
+    var carousel = $("#carousel").flipster({
+        style: 'carousel',
+        spacing: -0.5,
+        nav: true,
+        buttons: true,
+    });
+
+</script>
+<script>
+    var coverflow = $("#coverflowexcercise").flipster();
+    var carousel = $("#carousel").flipster({
+        style: 'carousel',
+        spacing: -0.5,
+        nav: true,
+        buttons: true,
+    });
+
+</script>
+</div>
+
+</body>
+</html>

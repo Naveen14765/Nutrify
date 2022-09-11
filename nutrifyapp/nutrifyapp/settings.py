@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-a#2k5=58!s=u_!vzjxm8kirhs&jjq@0b)0rbg#bt1dx&srp-3$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'nutrifying',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -110,11 +111,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
