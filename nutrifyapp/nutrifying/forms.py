@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from bootstrap_modal_forms.forms import BSModalModelForm
 from bootstrap_modal_forms.mixins import PopRequestMixin, CreateUpdateAjaxMixin
-from .models import Health, Excercise
+from .models import *
 
 
 class CreateUserForms(UserCreationForm):
@@ -22,6 +22,15 @@ class FoodModelForm(BSModalModelForm):
         }
 
 
+class CommunityModelForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
+    class Meta:
+        model = CommunityPeople
+        fields = '__all__'
+        widgets = {
+            'userName': forms.HiddenInput(),
+        }
+
+
 class ExcerciseModelForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
     class Meta:
         model = Excercise
@@ -29,6 +38,12 @@ class ExcerciseModelForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm
         widgets = {
             'userName': forms.HiddenInput(),
         }
+
+
+class DateModelForm(PopRequestMixin, CreateUpdateAjaxMixin, forms.ModelForm):
+    class Meta:
+        model = DateField
+        exclude = ['timestamp']
 
 
 class CustomUserCreationForm(PopRequestMixin, CreateUpdateAjaxMixin, UserCreationForm):

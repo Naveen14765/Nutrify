@@ -13,79 +13,93 @@
         margin: 150px auto;
         max-width: 98%;
     }
+    .back{
+        background-color: #0b2e13;
+        background-repeat: no-repeat;
+        background-size: 100%;
+
+    }
 
     h2 {
         margin: 2rem auto;
     }
+    .carding {
+
+            box-shadow: 0 0 5px 0;
+            background: inherit;
+            backdrop-filter: blur(10px);
+
+        }
     </style>
 </head>
 
-<body>
+<body class="bg-white">
 
 
-<div class="container h-50 w-50 pull-left" style="background-color:#222222; margin-top:  5%">
-    <div id="coverflow">
-        <ul class="flip-items">
+<div class="container back h-50 w-50 pull-left table rounded" id="foods-table"
+     style=" margin-top:  5%">
+    <div id="coverflow" >
+        <ul class="flip-items rounded">
             {% for food in foods %}
-            <li data-flip-title="Red">
-                <div style="width: 200px; height: 250px; background-color: green; color: white">
-                    <button type="button" class="update-food btn btn-sm btn-primary pull-right"
-                            data-form-url="{% url 'update_food' food.pk %}">
-                        <span class="fa fa-pencil"></span>
-                    </button>
-                    <button type="button" class="delete-food btn btn-sm btn-danger pull-right "
-                            data-form-url="{% url 'delete_food' food.pk %}">
-                        <span class="fa fa-trash"></span>
-                    </button>
+                <li data-flip-title="Red">
+                   <div style="width: 200px; height: 250px; color: white" class="bg-warning">
+                        <button type="button" class="delete-food btn btn-sm btn-danger pull-right "
+                                data-form-url="{% url 'delete_food' food.pk %}">
+                            <span class="fa fa-trash"></span>
+                        </button>
 
 
-                    <p>Food Type</p>
-                    <p>{{ food.food }}</p>
-                    <p>Username</p>
-                    <p>{{ food.userName }}</p>
+                        <p>Food Type</p>
+                        <p>{{ food.food }}</p>
 
-                    <p>Weight</p>
-                    <p>{{ food.weight }}</p>
+                        <p>Weight</p>
+                        <p>{{ food.weight }}</p>
 
-                    <p>Calories</p>
-                    <p>{{ food.calories }}</p>
-
+                        <p>Calories</p>
+                        <p>{{ food.calories }}</p>
+                        <!-- Update food buttons -->
 
 
-
-                </div>
-            </li>
+                    </div>
+                </li>
             {% endfor %}
-
 
 
         </ul>
     </div>
 </div>
 
-<div class="container h-50 w-50 pull-left" style="background-color:#222222; margin-top: 5%">
+
+<div class="container h-50 w-50 pull-left " style=" margin-top: 5%">
     <div id="coverflowexcercise">
         <ul class="flip-items">
             {% for add in add_workout %}
-            <li data-flip-title="Red">
-                <div style="width: 200px; height: 250px; background-color: green; color: white">
+                <li data-flip-title="Red">
+                    <div style="width: 200px; height: 250px; color: white" class="bg-warning">
+                        <button type="button" class="delete_excercise btn btn-sm btn-danger pull-right "
+                                data-form-url="{% url 'delete_excercise' add.pk %}">
+                            <span class="fa fa-trash"></span>
+                        </button>
 
-                    <p>Exercise</p>
-                    <p>{{ add.excercise }}</p>
 
-                    <p>Calories</p>
-                    <p>{{ add.calories }}</p>
+                        <p>Exercise</p>
+                        <p>{{ add.excercise }}</p>
 
-                    <p>Duration</p>
-                    <p>{{ add.duration }}</p>
-                </div>
+                        <p>Calories</p>
+                        <p>{{ add.calories }}</p>
 
-            </li>
+                        <p>Duration</p>
+                        <p>{{ add.duration }}</p>
+                    </div>
+
+                </li>
             {% endfor %}
 
         </ul>
     </div>
 </div>
+<br>
+
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.flipster/1.1.5/jquery.flipster.min.js"></script>
@@ -109,7 +123,22 @@
     });
 
 </script>
+
 </div>
 
+<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-25 mx-auto">
+    <p>Sum </p>
+    <p>{{ gained_calories.calories__sum }}</p>
+</div>
+<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-25 mx-auto">
+    <p>Sum </p>
+    <p>{{ burnt_calories.calories__sum }}</p>
+</div>
+<br>
+<br>
+<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-75 mx-auto">
+    <p>Difference </p>
+    <p>{{ calories_left.calories_left }}</p>
+</div>
 </body>
 </html>

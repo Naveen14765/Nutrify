@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ad10bceb-05d9-4ed0-adfc-8f32862dab74" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/community.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/create_date.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/create_post.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/myposts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Nutrify.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Nutrify.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifyapp/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifyapp/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifyapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifyapp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/_foods_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/_foods_table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/_header.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/_header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/add_workout.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/add_workout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/create_food.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/create_food.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/delete_food.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/delete_food.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/update_food.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/examples/update_food.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nutrifyapp/nutrifying/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/nutrifyapp/nutrifying/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EeaE6lwDZTxHf0xmgmSdzPAe3f" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/nkumar1/Videos/Nutrify",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nkumar1\Videos\Nutrify\nutrifyapp\nutrifying\templates" />
+      <recent name="C:\Users\nkumar1\Videos\Nutrify\nutrifyapp\nutrifying\templates\examples" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ad10bceb-05d9-4ed0-adfc-8f32862dab74" name="Changes" comment="" />
+      <created>1662958390204</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662958390204</updated>
+      <workItem from="1662958391999" duration="387000" />
+      <workItem from="1662958792570" duration="541000" />
+      <workItem from="1662959348372" duration="43000" />
+      <workItem from="1662959471583" duration="66000" />
+      <workItem from="1663087139773" duration="10438000" />
+      <workItem from="1663099754805" duration="3627000" />
+      <workItem from="1663103419961" duration="825000" />
+      <workItem from="1663130764118" duration="3588000" />
+      <workItem from="1663179618729" duration="3216000" />
+      <workItem from="1663215153870" duration="5579000" />
+      <workItem from="1663306191867" duration="1847000" />
+      <workItem from="1663481895959" duration="5836000" />
+      <workItem from="1663491191504" duration="4603000" />
+      <workItem from="1663606562090" duration="8573000" />
+      <workItem from="1663667170078" duration="3371000" />
+      <workItem from="1663690924360" duration="1589000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

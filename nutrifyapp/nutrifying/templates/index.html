@@ -4,25 +4,29 @@
 
   {% include "_modal.html" %}
 
-  <div class="container mt-3">
+  <div class="container mt-3 ">
     <div class="row">
       <div class="col">
 
         <div class="row">
           <div class="col-12 mb-3">
-            <button id="create-food" class="btn btn-primary" style="margin-left: 20%" type="button" name="button">
+            <button id="create-food" class="btn btn-primary  pull-left"  type="button" name="button">
               <span class="fa fa-plus mr-2"></span>Add Food Details
             </button>
-            <button id="create-excercise" class="btn btn-primary" style="float: right; margin-right: 20%" type="button" name="button">
+              <button id="create-date" class="btn btn-primary pull-right"  type="button" name="button">
+              <span class="fa fa-plus mr-2"></span>Search Date
+            </button>
+            <button id="create-excercise" class="btn btn-primary  pull-right" type="button" name="button">
               <span class="fa fa-plus mr-2"></span>Add Workout Details
             </button>
-            
+
           </div>
           <div class="col-12 mb-3">
           {% if 'type' in request.GET %}
             <p class="filtered-foods">Filtered foods.</p>
           {% endif %}
           {% include "_foods_table.html" %}
+
           </div>
         </div>
       </div>
@@ -32,102 +36,129 @@
 {% endblock content %}
 
 {% block extrascripts %}
-  <script type="text/javascript">
-      $(function () {
-          // Login
+    <script type="text/javascript">
+        $(function () {
+            // Login
 
 
-          // CreaFood synchronous
-          function creFoodModalForm() {
-            $("#create-food").modalForm({
-                formURL: "{% url 'create_food' %}",
-                modalID: "#create-modal"
-            });
-          }
-          creFoodModalForm();
+            // CreaFood synchronous
+            function creFoodModalForm() {
+                $("#create-food").modalForm({
+                    formURL: "{% url 'create_food' %}",
+                    modalID: "#create-modal"
+                });
+            }
 
-          // CreaFood asynchronous button
-          // message
-          var asyncSuccessMessageCreate = [
-            "<div ",
-            "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
-            "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
-            "Success: food was created.",
-            "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
-            "<span aria-hidden='true'>&times;</span>",
-            "</button>",
-            "</div>",
-            "<script>",
-            "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
-            "<\/script>"
-          ].join("");
+            creFoodModalForm();
 
-          // modal form
-          function creExcerciseModalForm() {
-            $("#create-excercise").modalForm({
-                formURL: "{% url 'add_exercise' %}",
-                modalID: "#create-modal"
-            });
-          }
-          creExcerciseModalForm();
+            function creDateModalForm() {
+                $("#create-date").modalForm({
+                    formURL: "{% url 'create_date' %}",
+                    modalID: "#create-modal"
+                });
+            }
 
-          // UpdaFood asynchronous button
-          // message
-          var asyncSuccessMessageUpdate = [
-            "<div ",
-            "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
-            "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
-            "Success: food was updated.",
-            "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
-            "<span aria-hidden='true'>&times;</span>",
-            "</button>",
-            "</div>",
-            "<script>",
-            "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
-            "<\/script>"
-          ].join("");
-
-          // modal form
-          function updateFoodModalForm() {
-            $(".update-food").each(function () {
-              $(this).modalForm({
-                formURL: $(this).data("form-url"),
-                asyncUpdate: true,
-                asyncSettings: {
-                  closeOnSubmit: true,
-                  successMessage: asyncSuccessMessageUpdate,
-                  dataUrl: "foods/",
-                  dataElementId: "#foods-table",
-                  dataKey: "table",
-                  addModalFormFunction: reinstantiateModalForms
-                  
-                }
-              });
-            });
-          }
-          updateFoodModalForm();
-
-          // DeleFood buttons - formURL is retrieved from the data of the element
-          function delFoodModalForm() {
-            $(".delete-food").each(function () {
-                $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
-            });
-          }
-          delFoodModalForm();
+            creDateModalForm();
 
 
-          function reinstantiateModalForms() {
+
+
+            // CreaFood asynchronous button
+            // message
+            var asyncSuccessMessageCreate = [
+                "<div ",
+                "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+                "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+                "Success: food was created.",
+                "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
+                "<span aria-hidden='true'>&times;</span>",
+                "</button>",
+                "</div>",
+                "<script>",
+                "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+                "<\/script>"
+            ].join("");
+
+            // modal form
+            function creExcerciseModalForm() {
+                $("#create-excercise").modalForm({
+                    formURL: "{% url 'add_exercise' %}",
+                    modalID: "#create-modal"
+                });
+            }
+
             creExcerciseModalForm();
-            updateFoodModalForm();
-            delFoodModalForm();
-          }
 
-         
-          // Hide message
-          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
-              $(".alert").slideUp(50);
-          });
-      });
-  </script>
+            // UpdaFood asynchronous button
+            // message
+            var asyncSuccessMessageUpdate = [
+                "<div ",
+                "style='position:fixed;top:0;z-index:10000;width:100%;border-radius:0;' ",
+                "class='alert alert-icon alert-success alert-dismissible fade show mb-0' role='alert'>",
+                "Success: food was updated.",
+                "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>",
+                "<span aria-hidden='true'>&times;</span>",
+                "</button>",
+                "</div>",
+                "<script>",
+                "$('.alert').fadeTo(2000, 500).slideUp(500, function () {$('.alert').slideUp(500).remove();});",
+                "<\/script>"
+            ].join("");
+
+            // modal form
+            function updateFoodModalForm() {
+                $(".update-food").each(function () {
+                    $(this).modalForm({
+                        formURL: $(this).data("form-url"),
+                        asyncUpdate: true,
+                        asyncSettings: {
+                            closeOnSubmit: true,
+                            successMessage: asyncSuccessMessageUpdate,
+                            dataUrl: "/foods/",
+                            dataElementId: "#coverflow",
+                            dataKey: "table",
+                            addModalFormFunction: reinstantiateModalForms
+
+                        }
+                    });
+                });
+            }
+
+            updateFoodModalForm();
+
+            // DeleFood buttons - formURL is retrieved from the data of the element
+            function delFoodModalForm() {
+                $(".delete-food").each(function () {
+                    $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
+                });
+            }
+            delExcerciseModalForm();
+
+
+            function delExcerciseModalForm() {
+                $(".delete_excercise").each(function () {
+                    $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
+                });
+            }
+
+            delFoodModalForm();
+
+
+            function reinstantiateModalForms() {
+                creExcerciseModalForm();
+                updateFoodModalForm();
+                delFoodModalForm();
+                creDateModalForm();
+                delExcerciseModalForm();
+
+            }
+
+
+            // Hide message
+            $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+                $(".alert").slideUp(50);
+            });
+        });
+    </script>
 
 {% endblock extrascripts %}

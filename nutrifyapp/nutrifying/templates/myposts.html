@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include "_modal.html" %}
+
+    <style>
+        div.text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: "----";
+        }
+    </style>
+    <body>
+
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    {% for items in myposts %}
+                        <div class="col-md-4">
+                            <div class="card mb-4 shadow-sm"><img class="bd-placeholder-img" width="100%" height="225"
+                                                                  src="{{ items.posts.url }}">
+                                <div class="card-body text">
+                                    <p class="card-text">{{ items.comment }}<br></p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <!-- Start: view | edit button -->
+                                        <div class="btn-group">
+                                            <p>@{{ items.userName }}</p>
+                                        </div>
+                                        <small>{{ items.timestamp }}</small></div>
+                                    <a class="btn btn-danger" href="{% url 'delete_history' items.id %}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // Login
+
+
+            // CreaFood synchronous
+            function crePostModalForm() {
+                $("#create-post").modalForm({
+                    formURL: "{% url 'create_post' %}",
+                    modalID: "#create-modal"
+                });
+            }
+
+            crePostModalForm();
+
+
+            function delPostModalForm() {
+                $(".delete_excercise").each(function () {
+                    $(this).modalForm({formURL: $(this).data("form-url"), isDeleteForm: true});
+                });
+            }
+
+            delPostModalForm();
+
+            $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+                $(".alert").slideUp(50);
+            });
+
+        });
+    </script>
+    <script>
+        function myFunction() {
+            var dots = document.getElementById("dots");
+            var moreText = document.getElementById("more");
+            var btnText = document.getElementById("myBtn");
+
+            if (dots.style.display === "none") {
+                dots.style.display = "inline";
+                btnText.innerHTML = "Read more";
+                moreText.style.display = "none";
+            } else {
+                dots.style.display = "none";
+                btnText.innerHTML = "Read less";
+                moreText.style.display = "inline";
+            }
+        }
+    </script>
+    </body>
+
+{% endblock %}

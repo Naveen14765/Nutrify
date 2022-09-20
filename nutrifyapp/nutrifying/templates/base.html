@@ -19,6 +19,7 @@
 
 
 
+
     {% block stylesheets %}
       <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
@@ -28,11 +29,14 @@
       <!-- Custom CSS -->
       <style media="screen">
         .invalid {
+          background-color: #f8f9fa;
+
           color: #dc3545;
           font-size: 80%;
         }
         body {
           display: flex;
+          background-color: #f8f9fa;
           flex-direction: column;
           min-height: 100vh;
         }
@@ -43,7 +47,7 @@
       </style>
     {% endblock stylesheets %}
 
-    <title>django-bootstrap-modal-forms</title>
+    
   </head>
 
   <body>

@@ -5,12 +5,19 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.views.decorators.cache import cache_control
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
 from django.template.loader import render_to_string
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import generic
-from .models import Excercise
+from .models import Excercise, DateField
+from django.db.models import Sum
+import datetime
+from dateutil import parser
+from collections import Counter, defaultdict
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.shortcuts import render
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -65,33 +72,54 @@ def logout_request(request):
 
 
 from bootstrap_modal_forms.generic import (
-    BSModalLoginView,
-    BSModalFormView,
     BSModalCreateView,
     BSModalUpdateView,
-    BSModalReadView,
-    BSModalDeleteView
+    BSModalDeleteView,
+
 )
 
 from .forms import (
     FoodModelForm,
+    DateModelForm,
     ExcerciseModelForm,
+    CommunityModelForm,
 )
-from .models import Health
+from .models import Health, CommunityPeople
 
 
 class Index(generic.ListView):
+    total_gained = 0
+    total_loss = 0
     model = Health
     context_object_name = 'foods'
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
+        date_current = DateField.objects.last().userinput
         context = super(Index, self).get_context_data(**kwargs)
-        context['add_workout'] = Health.objects.filter(userName=self.request.user)
-        return context
+        context['add_workout'] = Excercise.objects.filter(userName=self.request.user).filter(currentdate=date_current)
+        context['gained_calories'] = Health.objects.filter(userName=self.request.user).filter(
+            currentdate=date_current).aggregate(Sum('calories'))
+        context['burnt_calories'] = Excercise.objects.filter(userName=self.request.user).filter(
+            currentdate=date_current).aggregate(Sum('calories'))
+        try:
+            for i in Excercise.objects.filter(userName=self.request.user).filter(currentdate=date_current).aggregate(
+                    Sum('calories')).values():
+                self.total_loss = i
+            for j in Health.objects.filter(userName=self.request.user).filter(currentdate=date_current).aggregate(
+                    Sum('calories')).values():
+                self.total_gained = j
+            calories_left = self.total_gained - self.total_loss
+            context['calories_left'] = {'calories_left': calories_left}
+
+            return context
+        except:
+
+            return context
 
     def get_queryset(self):
-        return Health.objects.filter(userName=self.request.user)
+        date_current = DateField.objects.last().userinput
+        return Health.objects.filter(userName=self.request.user).filter(currentdate=date_current)
 
 
 class FoodCreateView(BSModalCreateView):
@@ -101,10 +129,17 @@ class FoodCreateView(BSModalCreateView):
     success_url = reverse_lazy('index')
 
 
+class DateCreateView(BSModalCreateView):
+    template_name = 'examples/create_date.html'
+    form_class = DateModelForm
+    success_message = 'Success: date was created.'
+    success_url = reverse_lazy('index')
+
+
 class ExerciseCreateView(BSModalCreateView):
     template_name = 'examples/add_workout.html'
     form_class = ExcerciseModelForm
-    success_message = 'Success: Workout created successfully'
+    success_message = 'Success: Date created successfully'
     success_url = reverse_lazy('index')
 
 
@@ -112,13 +147,70 @@ class FoodUpdateView(BSModalUpdateView):
     model = Health
     template_name = 'examples/update_food.html'
     form_class = FoodModelForm
-    success_message = 'Success: Food Field was updated.'
+    success_message = 'Success: Food was updated.'
     success_url = reverse_lazy('index')
 
 
 class FoodDeleteView(BSModalDeleteView):
     model = Health
     template_name = 'examples/delete_food.html'
-    success_message = 'Success: Food Feild was deleted.'
+    success_message = 'Success: Food Field was deleted.'
     success_url = reverse_lazy('index')
 
+
+class ExcerciseDeleteView(BSModalDeleteView):
+    model = Excercise
+    template_name = 'examples/delete_workout.html'
+    success_message = 'Success: Excercise Field was deleted.'
+    success_url = reverse_lazy('index')
+
+
+def foods(request):
+    data = dict()
+    if request.method == 'GET':
+        foods = Health.objects.all()
+        data['table'] = render_to_string(
+            '_foods_table.html',
+            {'foods': foods},
+            request=request
+        )
+        return JsonResponse(data)
+
+
+def add_workout(request):
+    data = dict()
+    if request.method == 'GET':
+        add_workout = Excercise.objects.all()
+        data['table'] = render_to_string('_foods_table.html', {'add_workout': add_workout}, request=request)
+        return JsonResponse(data)
+
+
+class PostCommunity(generic.ListView):
+    model = CommunityPeople
+    context_object_name = 'communityposts'
+    template_name = 'community.html'
+
+    def get_queryset(self):
+        return CommunityPeople.objects.all()
+
+
+class CommunityPostCreateView(BSModalCreateView):
+    template_name = 'examples/create_post.html'
+    form_class = CommunityModelForm
+    success_message = 'Success: Community Post was created.'
+    success_url = reverse_lazy('community')
+
+
+def analytics(request):
+    return render(request, 'analytics.html', {})
+
+
+def myposts(request):
+    myposts = CommunityPeople.objects.filter(userName=request.user)
+    return render(request, "myposts.html", {'myposts': myposts})
+
+
+def delete_history(request, id):
+    selected_history = CommunityPeople.objects.get(id=id)
+    selected_history.delete()
+    return redirect("myposts")

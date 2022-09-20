@@ -18,7 +18,7 @@
       {% endfor %}
     </div>
 
-    {% for field in form %}
+    {% for field in form.visible_fields %}
       <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {% render_field field class="form-control" placeholder=field.label %}
@@ -31,9 +31,9 @@
     {% endfor %}
     {% for face in form.hidden_fields %}
         {% if user.is_authenticated %}
-        {% render_field face class="form-control" placeholder=field.label value=user %}
-    {% endif %}
-        {% endfor %}
+        {% render_field face class="form-control" placeholder=face.label value=user %}
+        {% endif %}
+    {% endfor %}
   </div>
 
   <div class="modal-footer">
