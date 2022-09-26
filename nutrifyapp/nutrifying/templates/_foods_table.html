@@ -14,7 +14,7 @@
         max-width: 98%;
     }
     .back{
-        background-color: #0b2e13;
+
         background-repeat: no-repeat;
         background-size: 100%;
 
@@ -42,14 +42,14 @@
         <ul class="flip-items rounded">
             {% for food in foods %}
                 <li data-flip-title="Red">
-                   <div style="width: 200px; height: 250px; color: white" class="bg-warning">
+                   <div style="width: 200px; height: 250px; color: white;background-color: #38a391">
                         <button type="button" class="delete-food btn btn-sm btn-danger pull-right "
                                 data-form-url="{% url 'delete_food' food.pk %}">
                             <span class="fa fa-trash"></span>
                         </button>
 
 
-                        <p>Food Type</p>
+                        <p class="font-italic">Food Name</p>
                         <p>{{ food.food }}</p>
 
                         <p>Weight</p>
@@ -75,7 +75,7 @@
         <ul class="flip-items">
             {% for add in add_workout %}
                 <li data-flip-title="Red">
-                    <div style="width: 200px; height: 250px; color: white" class="bg-warning">
+                    <div style="width: 200px; height: 250px; color: white;background-color: #38a391">
                         <button type="button" class="delete_excercise btn btn-sm btn-danger pull-right "
                                 data-form-url="{% url 'delete_excercise' add.pk %}">
                             <span class="fa fa-trash"></span>
@@ -126,17 +126,17 @@
 
 </div>
 
-<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-25 mx-auto">
+<div class="shadow-lg p-3 mb-5 bg-body rounded w-25 mx-auto" style="background-color: #38a391">
     <p>Sum </p>
     <p>{{ gained_calories.calories__sum }}</p>
 </div>
-<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-25 mx-auto">
+<div class="shadow-lg p-3 mb-5 bg-body rounded w-25 mx-auto" style="background-color: #38a391">
     <p>Sum </p>
     <p>{{ burnt_calories.calories__sum }}</p>
 </div>
 <br>
 <br>
-<div class="shadow-lg p-3 mb-5 bg-body rounded bg-warning w-75 mx-auto">
+<div class="shadow-lg p-3 mb-5 bg-body rounded w-75 mx-auto" style="background-color: #38a391">
     <p>Difference </p>
     <p>{{ calories_left.calories_left }}</p>
 </div>

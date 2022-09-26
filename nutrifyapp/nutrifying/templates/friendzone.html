@@ -15,30 +15,14 @@
     <main role="main">
     <section class="jumbotron text-center">
             <div class="container">
-                <h1>My Posts</h1>
+                <h1>Friend Zone</h1>
                 <p class="lead text-muted"><br><br></p>
             </div>
         </section>
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="row">
-                    {% for items in myposts %}
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm"><img class="bd-placeholder-img" width="100%" height="225"
-                                                                  src="{{ items.posts.url }}">
-                                <div class="card-body text">
-                                    <p class="card-text">{{ items.comment }}<br></p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <!-- Start: view | edit button -->
-                                        <div class="btn-group">
-                                            <p>@{{ items.userName }}</p>
-                                        </div>
-                                        <small>{{ items.timestamp }}</small></div>
-                                    <a class="btn btn-danger" href="{% url 'delete_history' items.id %}">Delete</a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
+
 
 
                 </div>

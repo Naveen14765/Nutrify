@@ -49,6 +49,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                DateField.objects.create(userinput=datetime.date.today())
                 return redirect("index")
             else:
                 return redirect('homepage')
@@ -214,3 +215,11 @@ def delete_history(request, id):
     selected_history = CommunityPeople.objects.get(id=id)
     selected_history.delete()
     return redirect("myposts")
+
+
+def friendzone(request):
+    return render(request, 'friendzone.html', {})
+
+
+def friendrequest(request):
+    return render(request, 'requests.html', {})

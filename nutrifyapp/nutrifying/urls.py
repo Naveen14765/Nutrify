@@ -8,6 +8,8 @@ urlpatterns = [
     path('register/', views.registerPage, name='register'),
     path('community/', views.PostCommunity.as_view(), name='community'),
     path('myposts/', views.myposts, name='myposts'),
+    path('friendzone/', views.friendzone, name='friendzone'),
+    path('friendrequest/', views.friendrequest, name='friendrequest'),
     path('create_post/', views.CommunityPostCreateView.as_view(), name='create_post'),
     path("login", views.login_request, name="login"),
     path('logout/', auth_user.LogoutView.as_view(template_name='home.html'), name="logout"),

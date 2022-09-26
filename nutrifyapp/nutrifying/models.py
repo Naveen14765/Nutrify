@@ -31,3 +31,11 @@ class CommunityPeople(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
 
+class FriendZone(models.Model):
+    userName = models.TextField(max_length=50, null=True)
+    request_accepted = models.TextField(max_length=50, null=True)
+    chats = models.TextField(null=True)
+
+
+class Requests(models.Model):
+    userName = models.TextField(max_length=50, null=True)
